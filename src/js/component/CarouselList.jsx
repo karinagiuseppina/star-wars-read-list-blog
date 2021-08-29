@@ -6,16 +6,7 @@ import PropTypes from "prop-types";
 import PersonCard from "./PersonCard.jsx";
 
 const CarouselList = ({ title, list }) => {
-	let elementsInCards = [];
-	
-	for (let i = 0; i<list.length; i++){
-		let response = await fetch(element.url);
-		let peopleElement = await response.json();
-		elementsInCards.append(<PersonCard information={peopleElement.result.properties} />);
-	}
-	
-
-	console.log(elementsInCards);
+	let peopleInCards = list.map((info, index) => <PersonCard key={index} information={info} />);
 
 	return (
 		<div>
@@ -24,7 +15,7 @@ const CarouselList = ({ title, list }) => {
 					<h1>{title}</h1>
 				</div>
 			</div>
-			<div className="row">{elementsInCards}</div>
+			<div className="row">{peopleInCards}</div>
 		</div>
 	);
 };

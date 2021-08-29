@@ -10,7 +10,9 @@ const PersonCard = ({ information }) => {
 			<div className="card-body">
 				<h5 className="card-title">{information.name}</h5>
 				<p className="card-text">
-					{information.gender}, {information.eye_color}, {information.eye_color}
+					Gender: {information.gender}
+					Eye Color: {information.eye_color}
+					Hair Color: {information.hair_color}
 				</p>
 				<Link to="#" className="btn btn-primary">
 					Learn more!
