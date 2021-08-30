@@ -1,31 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/home.scss";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const PersonCard = ({ information }) => {
-	let PersonProperties = information.result.properties;
-	console.log(PersonProperties);
-	return (
-		<div className="col-3 card mx-1">
-			<img src="https://via.placeholder.com/350x150" className="card-img-top" />
-			<div className="card-body">
-				<h5 className="card-title">{PersonProperties.name}</h5>
-				<p className="card-text">
-					Gender: {PersonProperties.gender}
-					Eye Color: {PersonProperties.eye_color}
-					Hair Color: {PersonProperties.hair_color}
-				</p>
-				<Link to="#" className="btn btn-primary">
-					Learn more!
-				</Link>
-			</div>
-		</div>
-	);
+import ElementCard from "./ElementCard.jsx";
+
+const PersonCard = ({ person }) => {
+	const route = `/people/${person.uid}`;
+	const [personData, setPersonData] = useState(null);
+
+	function getPersonData() {
+		fetch(person.url)
+			.then(res => res.json())
+			.then(data => {
+				setPersonData(data.result);
+			})
+			.catch(err => console.error(err));
+	}
+
+	useEffect(() => {
+		getPersonData();
+	}, []);
+
+	let description =
+		personData !== null
+			? `Gender: ${personData.properties.gender},
+				Hair Color: ${personData.properties.hair_color},
+				Eye Color: ${personData.properties.eye_color}`
+			: "";
+
+	return <ElementCard title={person.name} description={description} route={route} />;
 };
 
 export default PersonCard;
 
 PersonCard.propTypes = {
-	information: PropTypes.object
+	person: PropTypes.object
 };

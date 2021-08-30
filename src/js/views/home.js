@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/home.scss";
-import { Link, useParams } from "react-router-dom";
-
-import CarouselList from "../component/CarouselList.jsx";
+import PersonCarousel from "../component/PersonCarousel.jsx";
+import VehicleCarousel from "../component/VehicleCarousel.jsx";
+import PlanetCarousel from "../component/PlanetCarousel.jsx";
 
 const Home = () => {
 	const [people, setPeople] = useState([]);
 	const [vehicles, setVehicles] = useState([]);
 	const [planets, setPlanets] = useState([]);
 
-	async function getElements(element, set) {
-		await fetch(`https://www.swapi.tech/api/${element}`)
+	function getElements(element, set) {
+		fetch(`https://www.swapi.tech/api/${element}`)
 			.then(res => res.json())
 			.then(data => {
 				set(data.results);
@@ -20,13 +20,15 @@ const Home = () => {
 
 	useEffect(() => {
 		getElements("people", setPeople);
-		// getElements("vehicles", setVehicles);
-		// getElements("planets", setPlanets);
+		getElements("vehicles", setVehicles);
+		getElements("planets", setPlanets);
 	}, []);
 
 	return (
 		<div className="container-fluid">
-			<CarouselList title="people" list={people} />
+			<PersonCarousel title="Characters" people={people} />
+			<PlanetCarousel title="Planets" planets={planets} />
+			<VehicleCarousel title="Vehicles" vehicles={vehicles} />
 		</div>
 	);
 };
