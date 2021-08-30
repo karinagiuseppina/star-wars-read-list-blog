@@ -7,13 +7,19 @@ import PersonCard from "./PersonCard.jsx";
 
 const CarouselList = ({ title, list }) => {
 	let peopleInCards = list.map(async function(person, index) {
-		let response = await fetch(person.url);
-		let responseJson = await response.json();
-		let render = <PersonCard key={index} information={responseJson.result} />;
-		return render;
+		// let response = await fetch(person.url);
+		// let responseJson = await response.json();
+		// return responseJson;
+		await fetch(person.url)
+			.then(res => res.json())
+			.then(data => {
+				return data.result;
+			})
+			.catch(err => console.error(err));
 	});
-
 	console.log(peopleInCards);
+
+	let peopleInCardsOne = peopleInCards.map((info, index) => <PersonCard key={index} information={info} />);
 
 	return (
 		<div>
@@ -22,7 +28,9 @@ const CarouselList = ({ title, list }) => {
 					<h1>{title}</h1>
 				</div>
 			</div>
-			<div className="row"> {peopleInCards}</div>
+			<div className="row p-4">
+				<div className="carouselCards">{peopleInCardsOne}</div>
+			</div>
 		</div>
 	);
 };
