@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/home.scss";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -6,11 +6,24 @@ import { Context } from "../store/appContext";
 
 const ElementCard = ({ title, description, route }) => {
 	const { store, actions } = useContext(Context);
+	const [classProperty, setClassProperty] = useState("btn btn-outline-warning");
 
-	function handleOnClick(event) {
-		actions.addFavorite(title);
-		event.target.className = "btn btn-warning";
+	function handleOnClick() {
+		if (store.favorites.findIndex(fav => fav.name == title) === -1) {
+			setClassProperty("btn btn-warning");
+			actions.addFavorite(title, route);
+		} else {
+			setClassProperty("btn btn-outline-warning");
+			actions.deleteFavorite(title);
+		}
 	}
+
+	useEffect(
+		() => {
+			if (store.favorites.findIndex(fav => fav.name == title) !== -1) setClassProperty("btn btn-warning");
+		},
+		[classProperty]
+	);
 	return (
 		<div className="col-3">
 			<div className="card border-secondary">
@@ -22,8 +35,8 @@ const ElementCard = ({ title, description, route }) => {
 						<Link to={route} className="btn btn-dark">
 							Learn more!
 						</Link>
-						<button type="button" className="btn btn-outline-warning" onClick={handleOnClick}>
-							♡
+						<button type="button" className={classProperty} onClick={handleOnClick}>
+							<i className="fas fa-heart" />
 						</button>
 					</div>
 				</div>

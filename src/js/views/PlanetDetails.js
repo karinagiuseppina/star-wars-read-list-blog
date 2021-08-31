@@ -12,7 +12,6 @@ const PlanetDetails = () => {
 		await fetch(`https://www.swapi.tech/api/planets/${params.id}`)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data.result);
 				setPlanetData(data.result);
 			})
 			.catch(err => console.error(err));

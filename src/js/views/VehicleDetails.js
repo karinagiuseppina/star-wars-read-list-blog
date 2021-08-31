@@ -12,7 +12,6 @@ const VehicleDetails = () => {
 		await fetch(`https://www.swapi.tech/api/vehicles/${params.id}`)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data.result);
 				setVehicleData(data.result);
 			})
 			.catch(err => console.error(err));

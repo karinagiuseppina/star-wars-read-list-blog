@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			favorites: ["Karla"]
+			favorites: [{ name: "Karla", route: "/people/2" }]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -39,9 +39,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			addFavorite: newFavorite => {
+			addFavorite: (newFavorite, route) => {
 				const store = getStore();
-				setStore({ favorites: [...store.favorites, newFavorite] });
+				let newfavorites = [...store.favorites, { name: newFavorite, route: route }];
+				getActions().setFavorites(newfavorites);
+			},
+			deleteFavorite: favoriteName => {
+				const store = getStore();
+				let favorites = [...store.favorites];
+				let newFavorites = favorites.filter(fav => fav.name != favoriteName);
+				getActions().setFavorites(newFavorites);
+			},
+			setFavorites: favorites => {
+				localStorage.setItem("favorites", JSON.stringify(favorites));
+				setStore({ favorites: favorites });
 			}
 		}
 	};
