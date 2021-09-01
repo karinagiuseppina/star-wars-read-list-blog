@@ -25,7 +25,7 @@ const ElementCard = ({ title, description, route }) => {
 		[classProperty]
 	);
 	return (
-		<div className="col-3 p-2">
+		<div className="col-4 p-1">
 			<div className="card border-secondary">
 				<img src="https://via.placeholder.com/350x150" className="card-img-top" />
 				<div className="card-body bg-secondary text-center">

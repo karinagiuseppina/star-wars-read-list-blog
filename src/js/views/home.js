@@ -25,7 +25,7 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="container-fluid">
+		<div className="container pt-4">
 			<PersonCarousel title="Characters" people={people} />
 			<PlanetCarousel title="Planets" planets={planets} />
 			<VehicleCarousel title="Vehicles" vehicles={vehicles} />

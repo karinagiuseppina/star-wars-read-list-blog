@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
 
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+
 const FavoriteListElement = ({ name, route }) => {
 	const { store, actions } = useContext(Context);
 	function handleDeleteFavorite() {
@@ -11,9 +14,14 @@ const FavoriteListElement = ({ name, route }) => {
 	}
 
 	return (
-		<li>
-			<Link to={route}>{name}</Link> <i className="fas fa-trash-alt" onClick={handleDeleteFavorite} />
-		</li>
+		<Dropdown.Item>
+			<div className="d-flex justify-content-stretch">
+				<Link to={route} className="flex-grow-1">
+					{name}
+				</Link>{" "}
+				<i className="fas fa-trash-alt" onClick={handleDeleteFavorite} />
+			</div>
+		</Dropdown.Item>
 	);
 };
 
