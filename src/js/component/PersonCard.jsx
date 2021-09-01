@@ -26,7 +26,7 @@ const PersonCard = ({ person }) => {
 			? `Gender: ${personData.properties.gender},
 				Hair Color: ${personData.properties.hair_color},
 				Eye Color: ${personData.properties.eye_color}`
-			: "";
+			: "Gender:,Hair Color: Eye Color: ";
 
 	return <ElementCard title={person.name} description={description} route={route} />;
 };

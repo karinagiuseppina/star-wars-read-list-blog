@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/home.scss";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import ElementProperty from "./ElementProperty.jsx";
 
@@ -21,7 +22,16 @@ const ElementMoreDetails = ({ name, description, properties }) => {
 				</div>
 			</div>
 
-			<div className="row text-center text-light p-2 mt-2 border-top border-secondary">{porpertiesInHtml}</div>
+			<div className="row text-center text-light p-2 mt-2 mb-4 border-top border-bottom border-secondary">
+				{porpertiesInHtml}
+			</div>
+			<div className="row">
+				<div className="col text-center">
+					<Link to="/">
+						<button className="btn btn-secondary">Back home</button>
+					</Link>
+				</div>
+			</div>
 		</div>
 	);
 };

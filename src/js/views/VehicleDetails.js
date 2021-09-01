@@ -8,8 +8,8 @@ const VehicleDetails = () => {
 	const [vehicleData, setVehicleData] = useState(null);
 	const params = useParams();
 
-	async function getVehicleData() {
-		await fetch(`https://www.swapi.tech/api/vehicles/${params.id}`)
+	function getVehicleData() {
+		fetch(`https://www.swapi.tech/api/vehicles/${params.id}`)
 			.then(res => res.json())
 			.then(data => {
 				setVehicleData(data.result);

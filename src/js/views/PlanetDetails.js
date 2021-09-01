@@ -8,8 +8,8 @@ const PlanetDetails = () => {
 	const [planetData, setPlanetData] = useState(null);
 	const params = useParams();
 
-	async function getPlanetData() {
-		await fetch(`https://www.swapi.tech/api/planets/${params.id}`)
+	function getPlanetData() {
+		fetch(`https://www.swapi.tech/api/planets/${params.id}`)
 			.then(res => res.json())
 			.then(data => {
 				setPlanetData(data.result);

@@ -2,7 +2,6 @@ import React from "react";
 import "../../styles/home.scss";
 import PropTypes from "prop-types";
 
-import ElementProperty from "./ElementProperty.jsx";
 import ElementMoreDetails from "./ElementMoreDetails.jsx";
 
 const PersonMoreDetails = ({ person }) => {

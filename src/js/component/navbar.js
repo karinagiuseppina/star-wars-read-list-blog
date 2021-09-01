@@ -27,25 +27,3 @@ export const Navbar = () => {
 		</nav>
 	);
 };
-
-{
-	/* <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
-<a className="navbar-brand" href="#">
-	Star Wars
-</a>
-<div>
-	<ul>
-		{store.favorites.map((favorite, index) => (
-			<FavoriteListElement key={index} name={favorite.name} route={favorite.route} />
-		))}
-	</ul>
-</div>
-</nav> 
-
-
-			{/* <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-				{store.favorites.map((favorite, index) => (
-					<FavoriteListElement key={index} name={favorite.name} route={favorite.route} />
-				))}
-			</DropdownButton>*/
-}

@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			favorites: [{ name: "Karla", route: "/people/2" }]
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction

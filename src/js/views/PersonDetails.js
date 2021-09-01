@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/home.scss";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import PersonMoreDetails from "../component/PersonMoreDetails.jsx";
 
@@ -8,8 +8,8 @@ const PersonDetails = () => {
 	const [personData, setPersonData] = useState(null);
 	const params = useParams();
 
-	async function getPersonData() {
-		await fetch(`https://www.swapi.tech/api/people/${params.id}`)
+	function getPersonData() {
+		fetch(`https://www.swapi.tech/api/people/${params.id}`)
 			.then(res => res.json())
 			.then(data => {
 				setPersonData(data.result);

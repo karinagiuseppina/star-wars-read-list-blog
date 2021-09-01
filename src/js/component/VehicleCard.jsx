@@ -26,7 +26,7 @@ const VehicleCard = ({ vehicle }) => {
 			? `Model: ${vehicleData.properties.model},
             Manufacturer: ${vehicleData.properties.manufacturer},
             Cargo_capacity: ${vehicleData.properties.cargo_capacity}`
-			: "";
+			: "Model: \n, Manufacturer: \n, Cargo_capacity:";
 
 	return <ElementCard title={vehicle.name} description={description} route={route} />;
 };

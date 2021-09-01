@@ -25,7 +25,7 @@ const PlanetCard = ({ planet }) => {
 		planetData !== null
 			? `Population: ${planetData.properties.population},
             Terrains: ${planetData.properties.terrain}`
-			: "";
+			: "Population: , Terrains:";
 
 	return <ElementCard title={planet.name} description={description} route={route} />;
 };
